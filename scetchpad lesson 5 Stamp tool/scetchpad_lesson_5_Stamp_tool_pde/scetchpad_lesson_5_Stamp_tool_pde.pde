@@ -1,5 +1,8 @@
+  
 //check website for criteria
-
+color blue   = #1000FF;
+color yellow = #FFFF00;
+color orange = #FFAA00;
 color green = #00FF00;
 color red   = #FF0000;
 color white = #FFFFFF;
@@ -12,13 +15,13 @@ int tool = 1;
 //0 means pen
 //1 means trollface stamp
 
-PImage trollface;
+PImage thanos;
 
 void setup() {
   size (800, 600);
-  background(grey);
+  background(white);
   sliderY = 350;
-  trollface = loadImage("trollface.png");
+  thanos = loadImage("thanos.png");
   imageMode(CENTER);
 }
 
@@ -32,33 +35,117 @@ void draw() {
       if (sliderY > 400) sliderY = 400;
       if (sliderY < 300) sliderY = 300;
     }
+    
+    
   }
 
 
   strokeWeight(1);
   stroke(black);
   fill(150);
-  rect (0, 0, 100, 600);
+  rect (0, 0, 150, 600);
 
-  fill(white);
-  ellipse(50, 50, 25, 25);
+
+ if (dist(90, 80, mouseX, mouseY) < 10) {
+    fill(176, 255, 121);
+ } else{
+    fill(green);
+  }
  
- fill(green);
- ellipse( 50, 150, 25, 25);
+ ellipse( 90, 80, 25, 25);
+ 
+ 
+ if (dist(110, 100, mouseX, mouseY) < 10) {
+    fill(121, 140, 255);
+ } else{
+  fill(blue);
+  }
+ 
+  ellipse(110, 100, 25, 25);
+ 
   
-
-  fill(black);
-  ellipse(50, 80, 25, 25);
+  if (dist(65, 70, mouseX, mouseY) < 10) {
+    fill(255, 245, 165);
+  } else{
+  fill(yellow);
+  }
   
+ ellipse( 65, 70, 25, 25);
+  
+if (dist(65, 100, mouseX, mouseY) < 10) {
+    fill(88, 88, 88);
+} else{
+ fill(black);
+  }
+  
+  ellipse(65, 100, 25, 25);
+  
+  if (dist(40, 80, mouseX, mouseY) < 10) {
+    
+  fill(255, 206, 70);
+  } else {
+    fill(orange);
+  }
+  ellipse(40, 80, 25, 25);
+  
+  
+  if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
+    fill(255, 244, 144);
+  } else{
+    fill(yellow);
+  }
+ 
+ rect(10, 520, 60, 25); //load button
+ rect(10, 515, 30, 5);
+ fill(blue);
+ rect(20, 532, 5, 15);
+ rect(20, 532, 40, 5);
+ rect(55, 532, 5, 15);
+ 
+ 
+ if (mouseX > 10 && mouseX < 50 && mouseY > 550 && mouseY < 590) {
+    fill(160, 144, 1255);
+ } else{
+   fill(blue);
+  }
+ 
+ rect(10, 550, 40, 40); //save button
+ fill(white);
+ rect(15, 551, 30, 25);
+ fill(grey);
+ rect(18, 578, 23, 12);
+ fill(blue);
+ rect(23, 580, 5, 8);
+  
+  
+  if (dist(20, 100, mouseX, mouseY) < 10) {
+    fill(255, 113, 113);
+} else {
   fill(red);
-  ellipse(50, 200, 25, 25);
+  
+}
+  ellipse(20, 100, 25, 25);
+  
+  if (mouseX > 60 && mouseX < 90 && mouseY > 200 && mouseY < 230) {
+   fill(106, 149, 255);
+  } else{
+    fill(blue);//eraser
+  }
+  
+  
+  rect(60, 200, 30, 20);
+  
+  fill(white);//eraser
+  rect(90, 201, 10, 18);
 
   line(50, 300, 50, 400);
   ellipse(50, sliderY, 25, 25);
+  
 
-  image(trollface, 50, 450, 50, 50);
 
-  if (mousePressed && mouseX > 100 ) {
+  image(thanos, 50, 450, 50, 50);
+
+  if (mousePressed && mouseX > 150 ) {
     println("?");
     if (tool == 0) {
       stroke(penColor);
@@ -67,45 +154,66 @@ void draw() {
     }
 
     if (tool == 1) {
-      image(trollface, mouseX, mouseY, thickness+10, thickness+10);
+      image(thanos, mouseX, mouseY, thickness+100, thickness+100);
     }
   }
 }
 
 void mouseReleased() {
-  if (dist(50, 50, mouseX, mouseY) < 10) {
-    penColor = white;
-    tool = 0;
-  }
-  if (dist(50, 80, mouseX, mouseY) < 10) {
+  
+  if (dist(65, 100, mouseX, mouseY) < 10) {
     penColor = black;
     tool = 0;
   }
   
-  if (dist(50, 200, mouseX, mouseY) < 10) {
+  if (dist(20, 100, mouseX, mouseY) < 10) {
     penColor = red;
     tool = 0;
   
   }
+  
+  if (dist(110, 100, mouseX, mouseY) < 10) {
+    penColor = blue;
+    tool = 0;
+  
+  }
+  
+  if (dist(65, 70, mouseX, mouseY) < 10) {
+    penColor = yellow;
+    tool = 0;
+  
+  }
+  
   if (dist(50, 450, mouseX, mouseY) < 35) {
     tool = 1;
   }
   
-  if (dist(50, 150, mouseX, mouseY) < 10) {
+  if (dist(90, 80, mouseX, mouseY) < 10) {
     penColor = green;
     tool = 0;
     
   }  
+  
+  if (dist(40, 80, mouseX, mouseY) < 10) {
+    penColor = orange;
+    tool = 0;
+    
+  }
 
-
+if (mouseX > 60 && mouseX < 90 && mouseY > 200 && mouseY < 230) {
+   penColor = white;
+    tool = 0; 
+  }
   
   if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
-    selectInput("PICK DA FILE, BRO <3", "openImage");
+    selectInput("PICK A FILE", "openImage");
   }
   
-  if (mouseX > 10 && mouseX < 60 && mouseY > 550 && mouseY < 545) {
+  if (mouseX > 10 && mouseX < 50 && mouseY > 550 && mouseY < 590) {
     selectOutput("Save as...", "saveImage");
   }
+  
+  
 }
     
 
